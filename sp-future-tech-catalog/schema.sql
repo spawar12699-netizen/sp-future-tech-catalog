@@ -1,0 +1,30 @@
+CREATE TABLE IF NOT EXISTS categories (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL UNIQUE,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS products (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  category TEXT NOT NULL,
+  price REAL NOT NULL DEFAULT 0,
+  description TEXT NOT NULL DEFAULT '',
+  image_url TEXT NOT NULL DEFAULT '',
+  active INTEGER NOT NULL DEFAULT 1,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT OR IGNORE INTO categories (name) VALUES
+  ('Electronics'), ('Mobile'), ('Tablet');
+
+
+-- Product images are stored directly in D1 as BLOB data.
+CREATE TABLE IF NOT EXISTS product_images (
+  id TEXT PRIMARY KEY,
+  mime_type TEXT NOT NULL,
+  data BLOB NOT NULL,
+  size_bytes INTEGER NOT NULL,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

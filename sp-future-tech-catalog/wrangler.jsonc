@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sp-future-tech-catalog",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-11-02",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/media/*"],
+    "not_found_handling": "single-page-application"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "sp-future-tech-db",
+      "database_id": "cb7d0c4b-94b3-4f45-8086-0a095c6787ac"
+    }
+  ]
+}
